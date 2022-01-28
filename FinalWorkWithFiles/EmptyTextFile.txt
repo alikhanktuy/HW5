@@ -1,0 +1,136 @@
+﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Collections;
+using System.Text.RegularExpressions;
+
+namespace FinalWorkWithFiles
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string var = "Hello3453232wor705Ld";
+            string mystr = Regex.Replace(var, @"\d", "");
+            string mynumber = Regex.Replace(var, @"\D", "");
+            Console.WriteLine(mystr);
+            Console.WriteLine(mynumber);
+
+
+
+            int number;
+            FileStream file;
+            string str; 
+            try {
+                file = new FileStream("/Users/Testing/Test.txt", FileMode.Open);
+                //file = new FileStream("/Users/Alyona_Levina/Projects/FinalWorkWithFiles/FinalWorkWithFiles/bin/Debug/netcoreapp3.1/Test1.txt", FileMode.Open);
+            }
+            catch(IOException exc)
+            {
+                Console.WriteLine(" " + exc.Message);
+                return;
+            }
+            StreamWriter fileOut = new StreamWriter(file);
+            StreamReader fileIn =  new StreamReader(file);
+            string line = fileIn.ReadLine();
+            string[] strs = line.Split(' ','"');
+            var resultString = Regex.Match(line, @"\d+").Value;
+
+            
+
+            foreach (var item in strs)
+            {
+
+
+                var resultString1 = Regex.Match(line, @"\d+").Value;
+                Int32.Parse(resultString1);
+            }
+
+
+            foreach (var value in strs)
+            {
+                int number1;
+
+                bool success = int.TryParse(value, out number1);
+                if (success)
+                {
+
+                    Console.WriteLine($"Converted '{value}' to {number1}.");
+                    number1 = number1 * number1;
+                }
+                else
+                {
+                    Console.WriteLine($"Attempted conversion of '{value ?? "<null>"}' failed.");
+                }
+            }
+
+
+
+
+           // fileOut.WriteLine(number * number); 
+            fileOut.Close();
+
+            var path = new DriveInfo("c");
+         //   var dir = path.RootDirectory.GetDirectories();
+
+
+            string currentDir = Directory.GetCurrentDirectory();
+            string target = @"/Users/Testing";
+            DirectoryInfo directory = new DirectoryInfo(currentDir);
+
+            Environment.CurrentDirectory = (target);
+            var files = directory.GetFiles("*.txt");
+
+            string sourceDirectory = @"/Users/Alyona_Levina/Projects/FinalWorkWithFiles/FinalWorkWithFiles/bin/Debug/netcoreapp3.1";
+           
+
+            try
+            {
+                var txtFiles = Directory.EnumerateFiles(target, "*.txt");
+                List<string> temp = new List<string>();
+
+                foreach (string currentFile in txtFiles)
+                {
+                    string fileName = currentFile.Substring(target.Length + 1);
+                    temp.Add(fileName);
+                   // Directory.Move(currentFile, Path.Combine(archiveDirectory, fileName));
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+           
+
+            using (var sw = new StreamWriter("/Users/Testing/Test12.txt", true))
+            {
+                // open, then read or write and close
+                sw.WriteLine(" hf hf hf ");
+            }
+
+
+
+        }
+    }
+}
+
+
+
+      var myArr = new DynamicArray<int>();
+            myArr.Add(1);
+            myArr.Add(6);
+            myArr.Add(2);
+            myArr.Add(10);
+            myArr.Add(3);
+            myArr.Add(9);
+
+            var tempArray = myArr.ToArray();
+            var s = new DynamicArray<int>();
+            s.SortArray<int>(tempArray, (a, b) => a > b);
+
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                Console.WriteLine(tempArray[i]);
+            }
