@@ -36,9 +36,9 @@ namespace FinalWorkWithFiles
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
-           
+
             FileStream file;
-        
+
             try
             {
                 file = new FileStream(@"C:\Users\Alikhan_Tuyakbayev\Desktop\FinalWorkWithFiles\Test.txt", FileMode.Open);
@@ -93,9 +93,6 @@ namespace FinalWorkWithFiles
             }
 
         }
-        #region
-        второй вариант
-        #endregion
         static void SecondVar()
         {
             string[] lines = File.ReadAllLines(@"C:\Users\Alikhan_Tuyakbayev\Desktop\FinalWorkWithFiles\Test.txt");
